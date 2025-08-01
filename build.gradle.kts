@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "2.2.0"
+    kotlin("multiplatform") version "2.2.0"
 }
 
 group = "com.wattsonic"
@@ -9,13 +9,24 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
 kotlin {
-    jvmToolchain(21)
+    js {
+        //useEsModules()
+        browser {
+//            webpackTask {
+//                output.libraryTarget = "commonjs2"
+//            }
+        }
+        nodejs()
+        binaries.executable()
+        generateTypeScriptDefinitions()
+    }
+
+    sourceSets {
+        val jsMain by getting {
+            dependencies {
+                implementation(kotlin("stdlib-js"))
+            }
+        }
+    }
 }
