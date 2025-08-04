@@ -24,6 +24,14 @@
     const groupCommand = new imaster.com.wattsonic.command.GroupCommand()
     console.log(groupCommand)
 
+    const exportClass = new imaster.com.wattsonic.MyExportedClass()
+    console.log(exportClass.exportedFunction())
+    console.log(exportClass.customJsName())
+
+    const stringUtils = imaster.com.wattsonic.StringUtils
+    console.log(stringUtils.capitalizeFirst('dasdsdadsadasda'))
+    console.log(stringUtils.countWords('dasds dads adasda'))
+
 </script>
 </body>
 </html>
